@@ -83,3 +83,15 @@ main{padding-top:0}
 main{padding-bottom:calc(250px + env(safe-area-inset-bottom))}
 @media(max-width:560px){.dock .pixel-garden{height:92px}.dock .pixel-plant{width:calc(100% / 9);max-width:46px}main{padding-bottom:calc(230px + env(safe-area-inset-bottom))}}
 @media(prefers-reduced-motion:reduce){.dock .pixel-garden{transition:none;transform:none}}
+
+/* Accessible flower targets; bees never intercept taps on the app. */
+.dock .pixel-garden{overflow:visible}
+.garden-flower{appearance:none;border:0;background:none;padding:0;margin:0;display:flex;align-items:flex-end;justify-content:center;width:calc(100% / 13);max-width:64px;min-height:64px;flex:0 1 auto;pointer-events:auto;cursor:pointer;border-radius:8px;touch-action:manipulation}
+.dock .garden-flower .pixel-plant{width:100%;max-width:56px;display:block}
+.garden-flower:hover .pixel-plant{filter:brightness(1.08)}
+.bee-swarm{position:absolute;width:0;height:0;pointer-events:none;z-index:3}
+.pixel-bee{position:absolute;width:22px;height:18px;left:-11px;top:-9px;pointer-events:none;animation:bee-flight 2.4s linear infinite;animation-delay:var(--bee-delay)}
+.pixel-bee svg{display:block;width:22px;height:18px;stroke:none;stroke-width:0;shape-rendering:crispEdges;fill:none;transform:rotate(calc(-1 * var(--bee-orbit)))}
+@keyframes bee-flight{0%{transform:rotate(var(--bee-orbit)) translate(30px,0) rotate(0deg)}25%{transform:rotate(var(--bee-orbit)) translate(0,-24px) rotate(-10deg)}50%{transform:rotate(var(--bee-orbit)) translate(-30px,0) rotate(0deg)}75%{transform:rotate(var(--bee-orbit)) translate(0,20px) rotate(10deg)}100%{transform:rotate(var(--bee-orbit)) translate(30px,0) rotate(0deg)}}
+@media(max-width:560px){.garden-flower{width:calc(100% / 7);max-width:none;min-height:72px}.garden-flower:nth-child(3),.garden-flower:nth-child(5),.garden-flower:nth-child(6),.garden-flower:nth-child(8),.garden-flower:nth-child(9),.garden-flower:nth-child(11){display:none}.dock .garden-flower .pixel-plant{max-width:46px}}
+@media(prefers-reduced-motion:reduce){.pixel-bee{animation:none;transform:rotate(var(--bee-orbit)) translate(26px,0)}}

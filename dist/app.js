@@ -40,4 +40,16 @@ const potColor=kind==='lavender'?'#b583d0':'#bd744d',potLight=kind==='lavender'?
 return '<svg class="pixel-plant" style="--grow-delay:'+index*90+'ms" viewBox="0 0 32 64" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="plant-growth">'+stem+(kind==='sprout'?sprout:leaves+(kind==='leaf'?buds:bloom))+'</g><path d="M5 49h22v8h-3v5H8v-5H5Z" fill="'+edge+'"/><path d="M7 51h18v4H7Zm3 5h12v5H10Z" fill="'+potColor+'"/><path d="M7 51h11v3H7Zm3 5h4v5h-4Z" fill="'+potLight+'"/><path d="M14 61h8v2h-8Z" fill="#985c46"/></svg>';
 }
 const garden=document.querySelector('.pixel-garden');
-if(garden){const kinds=['lavender','sprout','leaf','pink','sprout','sprout','sprout','sprout','sprout','pink','leaf','sprout','lavender'];garden.innerHTML=kinds.map(pixelPlant).join('');const dock=document.querySelector('.dock');let queued=false;function updateGarden(){queued=false;const visible=window.scrollY>24;dock.classList.toggle('garden-visible',visible);dock.classList.toggle('garden-grown',visible)}window.addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(updateGarden)}},{passive:true});updateGarden()}
+if(garden){const kinds=['lavender','sprout','leaf','pink','sprout','sprout','sprout','sprout','sprout','pink','leaf','sprout','lavender'];garden.innerHTML=kinds.map((kind,index)=>'<button class="garden-flower" type="button" aria-label="Make bees fly around plant '+(index+1)+'">'+pixelPlant(kind,index)+'</button>').join('');garden.querySelectorAll('.garden-flower').forEach(button=>button.addEventListener('click',()=>releaseBees(button))); const dock=document.querySelector('.dock');let queued=false;function updateGarden(){queued=false;const visible=window.scrollY>24;dock.classList.toggle('garden-visible',visible);dock.classList.toggle('garden-grown',visible)}window.addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(updateGarden)}},{passive:true});updateGarden()}
+
+let beeTimer;
+function releaseBees(button){
+clearTimeout(beeTimer);garden.querySelector('.bee-swarm')?.remove();
+const swarm=el('div','bee-swarm');swarm.setAttribute('aria-hidden','true');
+const bounds=garden.getBoundingClientRect(),plant=button.getBoundingClientRect();
+const center=Math.max(48,Math.min(bounds.width-48,plant.left-bounds.left+plant.width/2));
+swarm.style.left=center+'px';swarm.style.top=Math.max(30,plant.top-bounds.top+22)+'px';
+const art='<svg viewBox="0 0 20 16" focusable="false" aria-hidden="true"><path d="M5 2h4v2h2V1h4v5h-2v2H6V6H4V3Z" fill="#d9f3ff"/><path d="M6 5h8v2h3v2h2v4h-3v2H6v-2H3v-2H1V9h3V7h2Z" fill="#59415e"/><path d="M5 8h3v5H5Zm6-1h3v6h-3Z" fill="#f9ca4e"/><path d="M15 9h2v2h-2Z" fill="#fff8dc"/><path d="M6 3h2v3H6Zm6 0h2v4h-2Z" fill="#ffffff"/></svg>';
+for(let i=0;i<3;i++){const bee=el('span','pixel-bee');bee.innerHTML=art;bee.style.setProperty('--bee-delay',i*-.7+'s');bee.style.setProperty('--bee-orbit',i*120+'deg');swarm.append(bee)}
+garden.append(swarm);beeTimer=setTimeout(()=>swarm.remove(),4800);
+}
