@@ -59,3 +59,17 @@ main{padding-top:0}
 @media(max-width:350px){.photo-hero .intro-line{padding:16px 12px;min-height:165px;gap:8px}.photo-hero h1{font-size:23px}.photo-hero .destination{padding:8px 6px;gap:5px}.photo-hero .flag{font-size:17px}.photo-hero .destination strong{font-size:10px}.photo-hero .destination div>span{font-size:8px}.hotel-card{padding:13px 14px;font-size:11px}}
 
 .maps-link{text-decoration:none;text-align:center;white-space:normal}.maps-help{font-size:12px;line-height:1.6;color:#807987;margin:12px 0}.address .maps-help{white-space:normal}#stay-error:empty{display:none}
+
+/* A tiny pixel garden grows as the maker footer enters the viewport. */
+.maker-footer{margin-top:40px;padding:28px 0 0;border-top:0;color:#292530;font-size:18px;font-weight:550;line-height:1.5}
+.maker-footer a{color:inherit;text-decoration:none}.maker-footer a:hover{text-decoration:underline;color:var(--accent)}
+.maker-role{font-size:14px;font-weight:400;margin-top:5px;color:#514a59}
+.pixel-garden{display:flex;align-items:flex-end;justify-content:space-between;gap:2px;height:132px;margin-top:20px;border-bottom:2px solid #e4d8f1;background:linear-gradient(0deg,#f3eafb 0,transparent 45%);overflow:hidden}
+.pixel-plant{display:block;width:calc(100% / 13);max-width:48px;height:auto;flex:1;min-width:0;overflow:visible;shape-rendering:crispEdges}
+.pixel-plant .plant-growth{transform-box:view-box;transform-origin:50% 80%;transform:scaleY(.12);transition:transform 3.4s cubic-bezier(.2,.65,.25,1);transition-delay:var(--grow-delay,0ms)}
+.pixel-plant .plant-flower{opacity:0;transition:opacity 1.4s ease;transition-delay:calc(var(--grow-delay,0ms) + 1.8s)}
+.maker-footer.garden-grown .plant-growth{transform:scaleY(1)}
+.maker-footer.garden-grown .plant-flower{opacity:1}
+@media(max-width:560px){.maker-footer{font-size:17px;margin-top:32px}.maker-role{font-size:13px}.pixel-garden{height:108px;margin-top:15px;gap:0}.pixel-plant{width:calc(100% / 9)}.pixel-plant:nth-child(5),.pixel-plant:nth-child(6),.pixel-plant:nth-child(8),.pixel-plant:nth-child(9){display:none}}
+@media(prefers-reduced-motion:reduce){.pixel-plant .plant-growth{transform:scaleY(1);transition:none}.pixel-plant .plant-flower{opacity:1;transition:none}}
+.pixel-garden .pixel-plant{stroke:none;stroke-width:0;fill:none;stroke-linecap:butt;stroke-linejoin:miter}
