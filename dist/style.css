@@ -42,3 +42,18 @@ h1{font-size:34px;letter-spacing:-1.5px;line-height:1.2;margin:8px 0}
 .dock .say-mic svg{width:19px;height:21px}
 main{padding-bottom:calc(140px + env(safe-area-inset-bottom))}
 @media(max-width:560px){.dock{padding-left:16px;padding-right:16px}.dock-inner{gap:8px}.dock-inner>button{font-size:12px;padding:12px 8px}.dock #add{gap:7px}main{padding-bottom:calc(140px + env(safe-area-inset-bottom))}}
+
+/* Vietnam photo header and compact stay-details action. */
+.top{max-width:696px;padding:0 24px;border-bottom:0;height:78px}.top .icon-btn{margin-left:auto}
+main{padding-top:0}
+.photo-hero{border-radius:20px;overflow:hidden;background:linear-gradient(90deg,rgba(16,15,20,.62),rgba(16,15,20,.14) 72%),url('/hanoi.jpg') center 53%/cover;background-color:#342d3c}
+.photo-hero .intro-line{min-height:235px;padding:30px;gap:20px}
+.photo-hero h1{color:white;font-size:40px;line-height:1.15;letter-spacing:-1.3px;font-weight:800;max-width:330px;margin:0;text-shadow:0 2px 12px #0003}
+.photo-hero h1 em{color:white;font-style:normal}
+.photo-hero .destination{background:white;flex-shrink:0;box-shadow:0 4px 14px #0002;padding:12px;border:0;gap:9px}.photo-hero .country-code{display:none}
+.hotel-card{margin:12px 0 18px;padding:17px 20px;border:0;background:#f8f4fc;border-radius:18px;min-height:62px;gap:12px;font-size:14px;font-weight:500;line-height:1.45}
+#hotel-summary{flex:1;min-width:0;overflow-wrap:anywhere}
+.stay-plus{display:grid;place-items:center;flex-shrink:0;width:23px;height:23px;background:var(--accent);color:white;border-radius:50%;font-size:23px;line-height:1;font-weight:650}
+@media(min-width:1000px){.top{height:78px}main{padding-top:0}}
+@media(max-width:560px){.top{height:72px;margin:0 20px;padding:0}main{padding-top:0}.photo-hero{border-radius:16px}.photo-hero .intro-line{min-height:175px;padding:20px 15px;gap:10px}.photo-hero h1{font-size:27px;letter-spacing:-.8px;max-width:205px}.photo-hero .destination{padding:9px 8px;gap:6px}.photo-hero .destination strong{font-size:11px}.photo-hero .destination div>span{font-size:9px}.photo-hero .flag{font-size:20px}.hotel-card{margin:10px 0 14px;padding:14px 16px;font-size:12px;border-radius:16px;min-height:58px}.stay-plus{width:21px;height:21px;font-size:21px}}
+@media(max-width:350px){.photo-hero .intro-line{padding:16px 12px;min-height:165px;gap:8px}.photo-hero h1{font-size:23px}.photo-hero .destination{padding:8px 6px;gap:5px}.photo-hero .flag{font-size:17px}.photo-hero .destination strong{font-size:10px}.photo-hero .destination div>span{font-size:8px}.hotel-card{padding:13px 14px;font-size:11px}}
