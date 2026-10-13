@@ -73,3 +73,13 @@ main{padding-top:0}
 @media(max-width:560px){.maker-footer{font-size:17px;margin-top:32px}.maker-role{font-size:13px}.pixel-garden{height:108px;margin-top:15px;gap:0}.pixel-plant{width:calc(100% / 9)}.pixel-plant:nth-child(5),.pixel-plant:nth-child(6),.pixel-plant:nth-child(8),.pixel-plant:nth-child(9){display:none}}
 @media(prefers-reduced-motion:reduce){.pixel-plant .plant-growth{transform:scaleY(1);transition:none}.pixel-plant .plant-flower{opacity:1;transition:none}}
 .pixel-garden .pixel-plant{stroke:none;stroke-width:0;fill:none;stroke-linecap:butt;stroke-linejoin:miter}
+
+/* Edge-to-edge garden, anchored to the fixed action footer after scrolling. */
+.dock .pixel-garden{position:absolute;left:0;right:0;bottom:100%;width:100%;height:112px;margin:0;gap:0;border-bottom:0;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease,visibility .5s;background:linear-gradient(0deg,#f3eafb,rgba(255,255,255,0) 70%)}
+.dock.garden-visible .pixel-garden{opacity:1;visibility:visible;transform:translateY(0)}
+.dock .pixel-plant{width:calc(100% / 13);max-width:56px;flex:0 1 auto}
+.dock.garden-grown .plant-growth{transform:scaleY(1)}
+.dock.garden-grown .plant-flower{opacity:1}
+main{padding-bottom:calc(250px + env(safe-area-inset-bottom))}
+@media(max-width:560px){.dock .pixel-garden{height:92px}.dock .pixel-plant{width:calc(100% / 9);max-width:46px}main{padding-bottom:calc(230px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.dock .pixel-garden{transition:none;transform:none}}
