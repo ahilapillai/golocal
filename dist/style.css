@@ -105,3 +105,8 @@ main{padding-bottom:calc(250px + env(safe-area-inset-bottom))}
 @keyframes bee-buzz{0%{transform:translate(-8px,0)}12%{transform:translate(16px,-17px)}18%{transform:translate(13px,-14px)}26%{transform:translate(18px,-18px)}40%{transform:translate(-28px,-7px)}47%{transform:translate(-24px,-10px)}56%{transform:translate(-30px,-5px)}72%{transform:translate(24px,6px)}79%{transform:translate(20px,3px)}90%{transform:translate(6px,-21px);opacity:1}100%{transform:translate(-10px,-29px);opacity:0}}
 @media(max-width:560px){.dock .pixel-garden{height:54px}.dock .garden-flower{height:54px}.dock .garden-flower .pixel-plant{height:52px;width:27px}}
 @media(prefers-reduced-motion:reduce){.pixel-bee{animation:none!important;transform:translate(0,-10px)}}
+
+/* Credit visibility drives the fixed garden; compact space beneath the signature. */
+.maker-credit{display:block;white-space:nowrap}
+main{padding-bottom:calc(174px + env(safe-area-inset-bottom))}
+@media(max-width:560px){main{padding-bottom:calc(168px + env(safe-area-inset-bottom))}}
